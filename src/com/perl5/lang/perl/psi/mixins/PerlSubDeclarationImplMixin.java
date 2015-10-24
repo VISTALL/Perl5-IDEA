@@ -16,17 +16,13 @@
 
 package com.perl5.lang.perl.psi.mixins;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.stubs.IStubElementType;
-import com.perl5.PerlIcons;
 import com.perl5.lang.perl.idea.presentations.PerlItemPresentationSimple;
 import com.perl5.lang.perl.idea.stubs.subsdeclarations.PerlSubDeclarationStub;
 import com.perl5.lang.perl.psi.PsiPerlSubDeclaration;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 /**
  * Created by hurricup on 31.05.2015.
@@ -43,12 +39,12 @@ public abstract class PerlSubDeclarationImplMixin extends PerlSubBaseMixin<PerlS
 		super(stub, nodeType);
 	}
 
-	@Nullable
+	/*@Nullable
 	@Override
 	public Icon getIcon(int flags)
 	{
 		return PerlIcons.SUB_DECLARATION_GUTTER_ICON;
-	}
+	}   */
 
 	@Override
 	public ItemPresentation getPresentation()

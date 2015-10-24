@@ -174,7 +174,7 @@ public abstract class PerlUseStatementImplMixin extends StubBasedPsiElementBase<
 		return findChildByClass(PsiPerlIfStatementModifier.class);
 	}
 
-	@Override
+	//@Override
 	@Nullable
 	public PsiPerlNoStatement getNoStatement()
 	{

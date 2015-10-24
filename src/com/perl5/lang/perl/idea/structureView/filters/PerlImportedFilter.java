@@ -16,13 +16,13 @@
 
 package com.perl5.lang.perl.idea.structureView.filters;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.util.treeView.smartTree.ActionPresentation;
 import com.intellij.ide.util.treeView.smartTree.ActionPresentationData;
 import com.intellij.ide.util.treeView.smartTree.Filter;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
 import com.perl5.lang.perl.idea.structureView.elements.PerlStructureViewElement;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by hurricup on 15.08.2015.
@@ -48,7 +48,7 @@ public class PerlImportedFilter implements Filter
 	@Override
 	public ActionPresentation getPresentation()
 	{
-		return new ActionPresentationData("Show imported", null, AllIcons.Welcome.ImportProject);
+		return new ActionPresentationData("Show imported", null, AllIcons.General.ImportProject);
 	}
 
 	@NotNull

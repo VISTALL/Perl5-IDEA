@@ -176,7 +176,7 @@ public abstract class PerlSubBaseMixin<Stub extends PerlSubBaseStub> extends Stu
 		return getSubAnnotations().isMethod();
 	}
 
-	@Nullable
+	/*@Nullable
 	@Override
 	public Icon getIcon(int flags)
 	{
@@ -184,7 +184,7 @@ public abstract class PerlSubBaseMixin<Stub extends PerlSubBaseStub> extends Stu
 			return PerlIcons.METHOD_GUTTER_ICON;
 		else
 			return PerlIcons.SUB_GUTTER_ICON;
-	}
+	}    */
 
 	@Override
 	public void subtreeChanged()

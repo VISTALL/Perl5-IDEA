@@ -16,6 +16,7 @@
 
 package com.perl5.lang.embedded;
 
+import com.intellij.lang.LanguageVersion;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.FileViewProvider;
@@ -36,7 +37,7 @@ public class EmbeddedPerlParserDefinition extends PerlParserDefinition
 
 	@NotNull
 	@Override
-	public Lexer createLexer(Project project)
+	public Lexer createLexer(Project project, LanguageVersion languageVersion)
 	{
 		return new EmbeddedPerlLexerAdapter(project);
 	}

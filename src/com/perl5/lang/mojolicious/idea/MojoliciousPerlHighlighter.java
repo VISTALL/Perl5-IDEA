@@ -16,16 +16,16 @@
 
 package com.perl5.lang.mojolicious.idea;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.highlighter.HtmlFileType;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.ex.util.LayerDescriptor;
 import com.intellij.openapi.editor.ex.util.LayeredLexerEditorHighlighter;
-import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.perl5.lang.perl.lexer.PerlElementTypes;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by hurricup on 21.07.2015.
@@ -38,6 +38,6 @@ public class MojoliciousPerlHighlighter extends LayeredLexerEditorHighlighter im
 	{
 		super(new MojoliciousPerlSyntaxHighlighter(project), colors);
 		registerLayer(TEMPLATE_BLOCK_HTML, new LayerDescriptor(
-				SyntaxHighlighterFactory.getSyntaxHighlighter(StdFileTypes.HTML, project, virtualFile), ""));
+				SyntaxHighlighterFactory.getSyntaxHighlighter(HtmlFileType.INSTANCE, project, virtualFile), ""));
 	}
 }

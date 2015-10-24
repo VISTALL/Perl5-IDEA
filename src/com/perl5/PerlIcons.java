@@ -20,9 +20,9 @@ package com.perl5;
  * Created by hurricup on 11.04.2015.
  */
 
-import com.intellij.openapi.util.IconLoader;
+import javax.swing.Icon;
 
-import javax.swing.*;
+import com.intellij.openapi.util.IconLoader;
 
 public class PerlIcons
 {
@@ -34,8 +34,6 @@ public class PerlIcons
 	public static final Icon POD_FILE = IconLoader.getIcon("/icons/podicon.png");
 	public static final Icon SCRIPT_FILE = IconLoader.getIcon("/icons/perl5classic.png");
 	public static final Icon XS_FILE = IconLoader.getIcon("/icons/xsicon.png");
-
-	public static final Icon LIB_ROOT = IconLoader.getIcon("/icons/library_root.png");
 
 	public static final Icon EMBEDDED_PERL_FILE = IconLoader.getIcon("/icons/embeddedperl.png");
 	public static final Icon PACKAGE_GUTTER_ICON = IconLoader.getIcon("/icons/package_gutter_icon.png");

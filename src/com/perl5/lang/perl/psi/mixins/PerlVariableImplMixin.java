@@ -16,6 +16,11 @@
 
 package com.perl5.lang.perl.psi.mixins;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
@@ -29,7 +34,6 @@ import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
-import com.perl5.PerlIcons;
 import com.perl5.lang.perl.idea.presentations.PerlItemPresentationSimple;
 import com.perl5.lang.perl.idea.stubs.variables.PerlVariableStub;
 import com.perl5.lang.perl.lexer.PerlElementTypes;
@@ -38,13 +42,12 @@ import com.perl5.lang.perl.psi.impl.PerlFileImpl;
 import com.perl5.lang.perl.psi.properties.PerlLexicalScope;
 import com.perl5.lang.perl.psi.utils.PerlThisNames;
 import com.perl5.lang.perl.psi.utils.PerlVariableType;
-import com.perl5.lang.perl.util.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+import com.perl5.lang.perl.util.PerlArrayUtil;
+import com.perl5.lang.perl.util.PerlGlobUtil;
+import com.perl5.lang.perl.util.PerlHashUtil;
+import com.perl5.lang.perl.util.PerlPackageUtil;
+import com.perl5.lang.perl.util.PerlScalarUtil;
+import com.perl5.lang.perl.util.PerlSubUtil;
 
 /**
  * Created by hurricup on 24.05.2015.
@@ -342,7 +345,7 @@ public abstract class PerlVariableImplMixin extends StubBasedPsiElementBase<Perl
 */
 	}
 
-	@Nullable
+	/*@Nullable
 	@Override
 	public Icon getIcon(int flags)
 	{
@@ -356,7 +359,7 @@ public abstract class PerlVariableImplMixin extends StubBasedPsiElementBase<Perl
 			return PerlIcons.SCALAR_GUTTER_ICON;
 
 		return super.getIcon(flags);
-	}
+	}*/
 
 	@Override
 	public PerlVariable getLexicalDeclaration()

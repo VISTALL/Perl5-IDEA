@@ -16,6 +16,10 @@
 
 package com.perl5.lang.perl.idea.presentations;
 
+import javax.swing.Icon;
+
+import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.navigation.ColoredItemPresentation;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.colors.CodeInsightColors;
@@ -24,9 +28,6 @@ import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.perl5.lang.perl.psi.PerlDeprecatable;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 /**
  * Created by hurricup on 05.06.2015.
@@ -65,7 +66,7 @@ public abstract class PerlItemPresentationBase implements ColoredItemPresentatio
 	@Override
 	public Icon getIcon(boolean unused)
 	{
-		return myElement.getIcon(0);
+		return IconDescriptorUpdaters.getIcon(myElement, 0);
 	}
 
 	public PsiElement getElement()

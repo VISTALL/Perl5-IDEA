@@ -1,24 +1,27 @@
 package com.perl5.lang.perl.idea.sdk;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.Icon;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.util.ExecUtil;
-import com.intellij.openapi.projectRoots.*;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.projectRoots.SdkModificator;
+import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.perl5.PerlIcons;
-import org.jdom.Element;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by ELI-HOME on 04-Jun-15.
@@ -37,15 +40,9 @@ public class PerlSdkType extends SdkType
 	@NotNull
 	public static PerlSdkType getInstance()
 	{
-		PerlSdkType instance = SdkType.findInstance(PerlSdkType.class);
+		PerlSdkType instance = SdkType.EP_NAME.findExtension(PerlSdkType.class);
 		assert instance != null : "Make sure PerlSdkType is registered in plugin.xml";
 		return instance;
-	}
-
-	@Override
-	public void saveAdditionalData(@NotNull SdkAdditionalData sdkAdditionalData, @NotNull Element element)
-	{
-
 	}
 
 	@Override
@@ -88,22 +85,25 @@ public class PerlSdkType extends SdkType
 		return perlLibPaths;
 	}
 
-	@Nullable
-	@Override
-	public AdditionalDataConfigurable createAdditionalDataConfigurable(SdkModel sdkModel, SdkModificator
-			sdkModificator)
-	{
-		return null;
-	}
-
 	@Override
 	public String getPresentableName()
 	{
 		return "Perl5 Interpreter";
 	}
 
-	@Nullable
+	@NotNull
 	@Override
+	public Collection<String> suggestHomePaths()
+	{
+		String path = suggestHomePath();
+		if(path != null)
+		{
+			return Collections.singletonList(path);
+		}
+		return super.suggestHomePaths();
+	}
+
+	@Nullable
 	public String suggestHomePath()
 	{
 		String perlPath = getPathFromPerl();
@@ -156,28 +156,12 @@ public class PerlSdkType extends SdkType
 		return PerlIcons.PERL_LANGUAGE;
 	}
 
-	@Override
-	public Icon getIconForAddAction()
-	{
-		return getIcon();
-	}
-
 	@Nullable
 	@Override
-	public String getVersionString(@NotNull Sdk sdk)
+	public String getVersionString(@NotNull String sdkHome)
 	{
-		return getPerlVersionString(sdk);
+		return getPerlVersionString(sdkHome);
 	}
-
-	public String getPerlVersionString(@NotNull Sdk sdk)
-	{
-		String sdkHomePath = sdk.getHomePath();
-		if (sdkHomePath != null)
-			return getPerlVersionString(sdkHomePath);
-		else
-			return null;
-	}
-
 
 	public String getPerlVersionString(@NotNull String sdkHomePath)
 	{

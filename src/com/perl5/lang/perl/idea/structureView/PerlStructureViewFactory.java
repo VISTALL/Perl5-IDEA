@@ -16,14 +16,14 @@
 
 package com.perl5.lang.perl.idea.structureView;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.ide.structureView.StructureViewBuilder;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.TreeBasedStructureViewBuilder;
 import com.intellij.lang.PsiStructureViewFactory;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by hurricup on 15.08.2015.
@@ -40,7 +40,7 @@ public class PerlStructureViewFactory implements PsiStructureViewFactory
 			@Override
 			public StructureViewModel createStructureViewModel(@Nullable Editor editor)
 			{
-				return new PerlStructureViewModel(psiFile, editor);
+				return new PerlStructureViewModel(psiFile);
 			}
 
 			@Override

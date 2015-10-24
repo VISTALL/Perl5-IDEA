@@ -16,9 +16,9 @@
 
 package com.perl5.lang.perl.psi.mixins;
 
+import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
 import com.perl5.lang.perl.psi.*;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by hurricup on 26.08.2015.
@@ -54,7 +54,7 @@ public class PerlUseVarsMixin extends PerlVariableDeclarationMixin implements IP
 		return findChildByClass(PsiPerlIfStatementModifier.class);
 	}
 
-	@Override
+	//@Override
 	@Nullable
 	public PsiPerlNoStatement getNoStatement()
 	{

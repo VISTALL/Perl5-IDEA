@@ -16,9 +16,16 @@
 
 package com.perl5.lang.mojolicious;
 
+import gnu.trove.THashSet;
+
+import java.util.Arrays;
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.Language;
 import com.intellij.lang.LanguageParserDefinitions;
-import com.intellij.lang.StdLanguages;
+import com.intellij.lang.html.HTMLLanguage;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.MultiplePsiFilesPerDocumentFileViewProvider;
 import com.intellij.psi.PsiFile;
@@ -26,12 +33,6 @@ import com.intellij.psi.PsiManager;
 import com.intellij.psi.impl.source.PsiFileImpl;
 import com.intellij.psi.templateLanguages.TemplateLanguageFileViewProvider;
 import com.perl5.lang.embedded.psi.EmbeddedPerlTokenTypes;
-import gnu.trove.THashSet;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Arrays;
-import java.util.Set;
 
 /**
  * Created by hurricup on 21.07.2015.
@@ -40,7 +41,7 @@ public class MojoliciousPerlFileViewProvider extends MultiplePsiFilesPerDocument
 {
 
 	private static final THashSet<Language> ourRelevantLanguages =
-			new THashSet<Language>(Arrays.asList(StdLanguages.HTML, MojoliciousPerlLanguage.INSTANCE));
+			new THashSet<Language>(Arrays.asList(HTMLLanguage.INSTANCE, MojoliciousPerlLanguage.INSTANCE));
 
 
 	public MojoliciousPerlFileViewProvider(final PsiManager manager, final VirtualFile virtualFile, final boolean physical)
@@ -69,7 +70,7 @@ public class MojoliciousPerlFileViewProvider extends MultiplePsiFilesPerDocument
 		if (lang == getTemplateDataLanguage())
 		{
 
-			final PsiFileImpl file = (PsiFileImpl) LanguageParserDefinitions.INSTANCE.forLanguage(StdLanguages.HTML).createFile(this);
+			final PsiFileImpl file = (PsiFileImpl) LanguageParserDefinitions.INSTANCE.forLanguage(HTMLLanguage.INSTANCE).createFile(this);
 			file.setContentElementType(EmbeddedPerlTokenTypes.HTML_TEMPLATE_DATA);
 			return file;
 		}
@@ -91,7 +92,7 @@ public class MojoliciousPerlFileViewProvider extends MultiplePsiFilesPerDocument
 	@NotNull
 	public Language getTemplateDataLanguage()
 	{
-		return StdLanguages.HTML;
+		return HTMLLanguage.INSTANCE;
 	}
 
 }

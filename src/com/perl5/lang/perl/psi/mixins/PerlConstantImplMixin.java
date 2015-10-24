@@ -16,13 +16,13 @@
 
 package com.perl5.lang.perl.psi.mixins;
 
+import org.jetbrains.annotations.Nullable;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.util.IncorrectOperationException;
-import com.perl5.PerlIcons;
 import com.perl5.lang.perl.idea.completion.util.PerlSubCompletionProviderUtil;
 import com.perl5.lang.perl.idea.presentations.PerlItemPresentationSimple;
 import com.perl5.lang.perl.idea.stubs.constants.PerlConstantStub;
@@ -30,9 +30,6 @@ import com.perl5.lang.perl.psi.PerlString;
 import com.perl5.lang.perl.psi.PerlStringContentElement;
 import com.perl5.lang.perl.psi.PsiPerlConstantName;
 import com.perl5.lang.perl.util.PerlPackageUtil;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 /**
  * Created by hurricup on 04.08.2015.
@@ -132,12 +129,12 @@ public abstract class PerlConstantImplMixin extends StubBasedPsiElementBase<Perl
 		return new PerlItemPresentationSimple(this, getName());
 	}
 
-	@Nullable
+	/*@Nullable
 	@Override
 	public Icon getIcon(int flags)
 	{
 		return PerlIcons.CONSTANT_GUTTER_ICON;
-	}
+	}      */
 
 	@Override
 	public String getPresentableName()

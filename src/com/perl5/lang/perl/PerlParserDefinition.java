@@ -20,7 +20,9 @@ package com.perl5.lang.perl;
  * Created by hurricup on 12.04.2015.
  */
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
+import com.intellij.lang.LanguageVersion;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
 import com.intellij.lexer.Lexer;
@@ -39,7 +41,6 @@ import com.perl5.lang.perl.parser.PerlParser;
 import com.perl5.lang.perl.psi.impl.PerlFileImpl;
 import com.perl5.lang.perl.psi.impl.PerlHeredocElementImpl;
 import com.perl5.lang.perl.psi.impl.PerlParsableStringWrapperlImpl;
-import org.jetbrains.annotations.NotNull;
 
 public class PerlParserDefinition implements ParserDefinition, PerlElementTypes
 {
@@ -73,31 +74,31 @@ public class PerlParserDefinition implements ParserDefinition, PerlElementTypes
 
 	@NotNull
 	@Override
-	public Lexer createLexer(Project project)
+	public Lexer createLexer(Project project, LanguageVersion languageVersion)
 	{
 		return new PerlLexerAdapter(project);
 	}
 
 	@NotNull
-	public TokenSet getWhitespaceTokens()
+	public TokenSet getWhitespaceTokens(LanguageVersion languageVersion)
 	{
 		return WHITE_SPACES;
 	}
 
 	@NotNull
-	public TokenSet getCommentTokens()
+	public TokenSet getCommentTokens(LanguageVersion languageVersion)
 	{
 		return COMMENTS;
 	}
 
 	@NotNull
-	public TokenSet getStringLiteralElements()
+	public TokenSet getStringLiteralElements(LanguageVersion languageVersion)
 	{
 		return LITERALS;
 	}
 
 	@NotNull
-	public PsiParser createParser(final Project project)
+	public PsiParser createParser(final Project project, LanguageVersion languageVersion)
 	{
 		return new PerlParser();
 	}

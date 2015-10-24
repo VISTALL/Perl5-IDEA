@@ -16,6 +16,16 @@
 
 package com.perl5.lang.perl.psi.mixins;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
@@ -23,12 +33,19 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
-import com.perl5.PerlIcons;
 import com.perl5.lang.perl.extensions.packageprocessor.IPerlMroProvider;
 import com.perl5.lang.perl.extensions.packageprocessor.IPerlPackageParentsProvider;
 import com.perl5.lang.perl.idea.presentations.PerlItemPresentationSimple;
 import com.perl5.lang.perl.idea.stubs.namespaces.PerlNamespaceDefinitionStub;
-import com.perl5.lang.perl.psi.*;
+import com.perl5.lang.perl.psi.PerlNamespaceDefinition;
+import com.perl5.lang.perl.psi.PerlNamespaceElement;
+import com.perl5.lang.perl.psi.PerlStringContentElement;
+import com.perl5.lang.perl.psi.PerlVariable;
+import com.perl5.lang.perl.psi.PsiPerlArrayVariable;
+import com.perl5.lang.perl.psi.PsiPerlAssignExpr;
+import com.perl5.lang.perl.psi.PsiPerlNamespaceDefinition;
+import com.perl5.lang.perl.psi.PsiPerlUseStatement;
+import com.perl5.lang.perl.psi.PsiPerlVariableDeclarationGlobal;
 import com.perl5.lang.perl.psi.mro.PerlMro;
 import com.perl5.lang.perl.psi.mro.PerlMroC3;
 import com.perl5.lang.perl.psi.mro.PerlMroDfs;
@@ -38,11 +55,6 @@ import com.perl5.lang.perl.util.PerlArrayUtil;
 import com.perl5.lang.perl.util.PerlHashUtil;
 import com.perl5.lang.perl.util.PerlScalarUtil;
 import com.perl5.lang.perl.util.PerlSubUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.util.*;
 
 /**
  * Created by hurricup on 28.05.2015.
@@ -123,12 +135,12 @@ public abstract class PerlNamespaceDefinitionImplMixin extends StubBasedPsiEleme
 		return new ArrayList<String>(result);
 	}
 
-	@Nullable
+	/*@Nullable
 	@Override
 	public Icon getIcon(int flags)
 	{
 		return PerlIcons.PACKAGE_GUTTER_ICON;
-	}
+	} */
 
 	@Override
 	public ItemPresentation getPresentation()

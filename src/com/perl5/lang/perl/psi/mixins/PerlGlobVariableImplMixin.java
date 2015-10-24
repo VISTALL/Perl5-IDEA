@@ -15,13 +15,14 @@
 
 package com.perl5.lang.perl.psi.mixins;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.util.IncorrectOperationException;
-import com.perl5.PerlIcons;
 import com.perl5.lang.perl.idea.completion.util.PerlSubCompletionProviderUtil;
 import com.perl5.lang.perl.idea.presentations.PerlItemPresentationSimple;
 import com.perl5.lang.perl.idea.stubs.globs.PerlGlobStub;
@@ -32,10 +33,6 @@ import com.perl5.lang.perl.psi.PsiPerlAssignExpr;
 import com.perl5.lang.perl.psi.PsiPerlGlobVariable;
 import com.perl5.lang.perl.util.PerlGlobUtil;
 import com.perl5.lang.perl.util.PerlPackageUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 /**
  * Created by hurricup on 25.05.2015.
@@ -145,12 +142,12 @@ public abstract class PerlGlobVariableImplMixin extends StubBasedPsiElementBase<
 	}
 
 
-	@Nullable
+	/*@Nullable
 	@Override
 	public Icon getIcon(int flags)
 	{
 		return PerlIcons.GLOB_GUTTER_ICON;
-	}
+	}  */
 
 	@Override
 	public ItemPresentation getPresentation()

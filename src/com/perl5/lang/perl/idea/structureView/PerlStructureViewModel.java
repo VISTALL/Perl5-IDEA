@@ -16,17 +16,22 @@
 
 package com.perl5.lang.perl.idea.structureView;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.StructureViewModelBase;
 import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.util.treeView.smartTree.Filter;
 import com.intellij.ide.util.treeView.smartTree.Sorter;
-import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiFile;
 import com.perl5.lang.perl.idea.structureView.elements.PerlLeafStructureViewElement;
 import com.perl5.lang.perl.idea.structureView.elements.PerlStructureViewElement;
-import com.perl5.lang.perl.idea.structureView.filters.*;
-import org.jetbrains.annotations.NotNull;
+import com.perl5.lang.perl.idea.structureView.filters.PerlConstantFilter;
+import com.perl5.lang.perl.idea.structureView.filters.PerlDeclarationFilter;
+import com.perl5.lang.perl.idea.structureView.filters.PerlGlobFilter;
+import com.perl5.lang.perl.idea.structureView.filters.PerlImportedFilter;
+import com.perl5.lang.perl.idea.structureView.filters.PerlInheritedFilter;
+import com.perl5.lang.perl.idea.structureView.filters.PerlMethodFilter;
+import com.perl5.lang.perl.idea.structureView.filters.PerlVariableFilter;
 
 /**
  * Created by hurricup on 15.08.2015.
@@ -43,9 +48,9 @@ public class PerlStructureViewModel extends StructureViewModelBase implements St
 			PerlImportedFilter.INSTANCE
 	};
 
-	public PerlStructureViewModel(PsiFile psiFile, Editor editor)
+	public PerlStructureViewModel(PsiFile psiFile)
 	{
-		super(psiFile, editor, new PerlStructureViewElement(psiFile));
+		super(psiFile, new PerlStructureViewElement(psiFile));
 	}
 
 	@NotNull

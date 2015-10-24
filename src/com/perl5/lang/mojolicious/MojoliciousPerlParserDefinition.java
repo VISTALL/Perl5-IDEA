@@ -16,6 +16,7 @@
 
 package com.perl5.lang.mojolicious;
 
+import com.intellij.lang.LanguageVersion;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.FileViewProvider;
@@ -35,7 +36,7 @@ public class MojoliciousPerlParserDefinition extends PerlParserDefinition
 
 	@NotNull
 	@Override
-	public Lexer createLexer(Project project)
+	public Lexer createLexer(Project project, LanguageVersion languageVersion)
 	{
 		return new MojoliciousPerlLexerAdapter(project);
 	}

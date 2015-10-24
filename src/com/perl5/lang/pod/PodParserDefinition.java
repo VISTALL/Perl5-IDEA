@@ -17,6 +17,7 @@
 package com.perl5.lang.pod;
 
 import com.intellij.lang.ASTNode;
+import com.intellij.lang.LanguageVersion;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
 import com.intellij.lexer.Lexer;
@@ -47,31 +48,31 @@ public class PodParserDefinition implements ParserDefinition, PodElementTypes
 
 	@NotNull
 	@Override
-	public Lexer createLexer(Project project)
+	public Lexer createLexer(Project project, LanguageVersion languageVersion)
 	{
 		return new PodLexerAdapter(project);
 	}
 
 	@NotNull
-	public TokenSet getWhitespaceTokens()
+	public TokenSet getWhitespaceTokens(LanguageVersion languageVersion)
 	{
 		return WHITE_SPACES;
 	}
 
 	@NotNull
-	public TokenSet getCommentTokens()
+	public TokenSet getCommentTokens(LanguageVersion languageVersion)
 	{
 		return TokenSet.EMPTY;
 	}
 
 	@NotNull
-	public TokenSet getStringLiteralElements()
+	public TokenSet getStringLiteralElements(LanguageVersion languageVersion)
 	{
 		return TokenSet.EMPTY;
 	}
 
 	@NotNull
-	public PsiParser createParser(final Project project)
+	public PsiParser createParser(final Project project, LanguageVersion languageVersion)
 	{
 		return new PodParser();
 	}

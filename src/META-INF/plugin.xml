@@ -72,15 +72,7 @@
     ]]>
     </change-notes>
 
-    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="139"/>
-
-    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
-         on how to target different products -->
-
-    <depends>com.intellij.modules.lang</depends>
-    <depends optional="true" config-file="java-deps.xml">com.intellij.modules.java</depends>
-
+	<depends>com.intellij.xml</depends>
     <extensionPoints>
         <extensionPoint name="packageProcessor" beanClass="com.perl5.lang.perl.idea.EP.PerlPackageProcessorEP">
             <with attribute="implementationClass"
@@ -114,8 +106,6 @@
         <internalFileTemplate name="Perl5 embedded"/>
         <internalFileTemplate name="Perl5 mojolicious"/>
 
-        <projectService serviceImplementation="com.perl5.lang.perl.idea.settings.Perl5Settings"/>
-
         <lang.formatter language="Perl5"
                         implementationClass="com.perl5.lang.perl.idea.formatter.PerlFormattingModelBuilder"/>
         <codeStyleSettingsProvider
@@ -124,15 +114,6 @@
                 implementation="com.perl5.lang.perl.idea.formatter.settings.PerlLanguageCodeStyleSettingsProvider"/>
 
         <lang.indentStrategy language="Perl5" implementationClass="com.perl5.lang.perl.idea.editor.PerlIndentStrategy"/>
-        <moduleType id="PERL5_MODULE" implementationClass="com.perl5.lang.perl.idea.modules.PerlModuleType"/>
-
-        <projectConfigurable displayName="Perl5 libs" groupId="project"
-                             provider="com.perl5.lang.perl.idea.configuration.paths.PerlPathsConfigurableProvider"/>
-        <projectConfigurable groupId="language"
-                             provider="com.perl5.lang.perl.idea.configuration.settings.PerlSettingsConfigurableProvider"/>
-
-        <projectStructure.sourceRootEditHandler
-                implementation="com.perl5.lang.perl.idea.configuration.paths.PerlIncludeLibrarySourceRootEditHandler"/>
 
 
         <createFromTemplateHandler
@@ -174,8 +155,8 @@
         <lang.foldingBuilder language="Perl5" implementationClass="com.perl5.lang.perl.idea.PerlFoldingBuilder"/>
         <lang.commenter language="Perl5" implementationClass="com.perl5.lang.perl.idea.editor.PerlCommenter"/>
         <lang.braceMatcher language="Perl5" implementationClass="com.perl5.lang.perl.idea.editor.PerlBraceMatcher"/>
-        <lang.ast.factory language="Perl5" implementationClass="com.perl5.lang.perl.psi.utils.PerlASTFactory"
-                          order="first"/>
+
+		<lang.ast.leafFactory implementation="com.perl5.lang.perl.psi.utils.PerlASTLeafFactory" />
 
         <psi.referenceContributor implementation="com.perl5.lang.perl.psi.references.PerlReferenceContributor"/>
         <elementDescriptionProvider implementation="com.perl5.lang.perl.idea.PerlElementDescriptionProvider"/>
@@ -397,18 +378,6 @@
 
     </extensions>
 
-    <application-components>
-    </application-components>
-
-    <project-components>
-        <!-- Add your project components here -->
-        <component>
-            <implementation-class>com.perl5.lang.perl.idea.project.PerlProjectComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.perl5.lang.perl.idea.project.PerlMicroIdeSettingsLoader</implementation-class>
-        </component>
-    </project-components>
 
     <actions>
         <group class="com.perl5.lang.perl.idea.actions.groups.PerlFileActionsGroup" id="Perl5NewFile"
