@@ -220,8 +220,8 @@ public class PerlSubUtil implements PerlElementTypes {
       return "";
     }
 
-    String argumentListString = StringUtil.join(argumentsList, ", ");
-    String optionalArgumentsString = StringUtil.join(optionalAargumentsList, ", ");
+    String argumentListString = String.join(", ", argumentsList);
+    String optionalArgumentsString = String.join(", ", optionalAargumentsList);
 
     if (argumentListString.isEmpty()) {
       return "([" + optionalArgumentsString + "])";

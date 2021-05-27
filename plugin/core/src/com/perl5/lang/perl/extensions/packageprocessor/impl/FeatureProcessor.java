@@ -16,7 +16,6 @@
 
 package com.perl5.lang.perl.extensions.packageprocessor.impl;
 
-import com.intellij.openapi.util.text.StringUtil;
 import com.perl5.lang.perl.extensions.packageprocessor.PerlFeaturesProvider;
 import com.perl5.lang.perl.extensions.packageprocessor.PerlPackageOptionsProvider;
 import com.perl5.lang.perl.extensions.packageprocessor.PerlPragmaProcessorBase;
@@ -39,7 +38,7 @@ public class FeatureProcessor extends PerlPragmaProcessorBase implements PerlPac
 
   static {
     for (Map.Entry<String, List<String>> option : PerlFeaturesTable.AVAILABLE_FEATURES_BUNDLES.entrySet()) {
-      OPTIONS_BUNDLES.put(":" + option.getKey(), StringUtil.join(option.getValue(), " "));
+      OPTIONS_BUNDLES.put(":" + option.getKey(), String.join(" ", option.getValue()));
     }
   }
 

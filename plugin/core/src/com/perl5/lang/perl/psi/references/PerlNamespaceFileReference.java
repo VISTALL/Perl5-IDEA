@@ -54,7 +54,7 @@ public class PerlNamespaceFileReference extends PerlCachingReference<PerlNamespa
     if (currentName != null && newElementName.endsWith(".pm")) {
       String[] nameChunks = currentName.split(PerlPackageUtil.NAMESPACE_SEPARATOR);
       nameChunks[nameChunks.length - 1] = newElementName.replaceFirst("\\.pm$", "");
-      newElementName = StringUtil.join(nameChunks, PerlPackageUtil.NAMESPACE_SEPARATOR);
+      newElementName = String.join(PerlPackageUtil.NAMESPACE_SEPARATOR, nameChunks);
 
       return super.handleElementRename(newElementName);
     }

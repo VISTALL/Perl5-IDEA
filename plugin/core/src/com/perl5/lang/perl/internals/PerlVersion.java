@@ -192,7 +192,7 @@ public class PerlVersion implements PerlVersionRegexps, Comparable<PerlVersion> 
       result.add(Integer.toString(chunk));
     }
 
-    return "v" + StringUtil.join(result, ".");
+    return "v" + String.join(".", result);
   }
 
   public String getStrictNumericVersion() {

@@ -16,7 +16,6 @@
 
 package com.perl5.lang.perl.extensions.packageprocessor.impl;
 
-import com.intellij.openapi.util.text.StringUtil;
 import com.perl5.lang.perl.extensions.packageprocessor.PerlPackageOptionsProvider;
 import com.perl5.lang.perl.extensions.packageprocessor.PerlPragmaProcessorBase;
 import com.perl5.lang.perl.extensions.packageprocessor.PerlWarningsProvider;
@@ -53,7 +52,7 @@ public class WarningsProcessor extends PerlPragmaProcessorBase implements PerlPa
       OPTIONS_BUNDLES.put(option.getKey(),
                           option.getValue().getMinVersion().getStrictDottedVersion()
                           + ", "
-                          + StringUtil.join(subElements, " ")
+                          + String.join(" ", subElements)
       );
     }
   }

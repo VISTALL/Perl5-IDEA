@@ -62,7 +62,7 @@ public class PodLinkToFileReference extends PerlCachingReference<PodFormatterL> 
           (newElementName.endsWith("." + PerlFileTypePackage.EXTENSION) || newElementName.endsWith("." + PodFileType.EXTENSION))) {
         String[] nameChunks = currentName.split(PerlPackageUtil.NAMESPACE_SEPARATOR);
         nameChunks[nameChunks.length - 1] = newElementName.replaceFirst(PodFileUtil.PM_OR_POD_EXTENSION_PATTERN, "");
-        newElementName = StringUtil.join(nameChunks, PerlPackageUtil.NAMESPACE_SEPARATOR);
+        newElementName = String.join(PerlPackageUtil.NAMESPACE_SEPARATOR, nameChunks);
 
         return super.handleElementRename(newElementName);
       }

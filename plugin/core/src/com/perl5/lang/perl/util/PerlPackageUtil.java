@@ -187,7 +187,7 @@ public class PerlPackageUtil implements PerlElementTypes, PerlCorePackages {
   }
 
   public static @NotNull String join(@NotNull String... chunks) {
-    return StringUtil.join(chunks, NAMESPACE_SEPARATOR);
+    return String.join(NAMESPACE_SEPARATOR, chunks);
   }
 
   /**
@@ -220,7 +220,7 @@ public class PerlPackageUtil implements PerlElementTypes, PerlCorePackages {
       chunks[0] = MAIN_NAMESPACE_NAME;
     }
 
-    newName = StringUtil.join(chunks, NAMESPACE_SEPARATOR);
+    newName = String.join(NAMESPACE_SEPARATOR, chunks);
 
     CANONICAL_NAMES_CACHE.put(originalName, newName);
 
@@ -409,7 +409,7 @@ public class PerlPackageUtil implements PerlElementTypes, PerlCorePackages {
    * @return package path
    */
   public static String getPackagePathByName(String packageName) {
-    return StringUtil.join(packageName.split(":+"), "/") + "." + PerlFileTypePackage.EXTENSION;
+    return String.join("/", packageName.split(":+")) + "." + PerlFileTypePackage.EXTENSION;
   }
 
   /**
@@ -423,7 +423,7 @@ public class PerlPackageUtil implements PerlElementTypes, PerlCorePackages {
 
     if (result == null) {
       String path = packagePath.replaceAll("\\\\", "/");
-      result = getCanonicalNamespaceName(StringUtil.join(path.replaceFirst("\\.pm$", "").split("/"), NAMESPACE_SEPARATOR));
+      result = getCanonicalNamespaceName(String.join(NAMESPACE_SEPARATOR, path.replaceFirst("\\.pm$", "").split("/")));
       PATH_TO_PACKAGE_NAME_MAP.put(packagePath, result);
     }
     return result;
